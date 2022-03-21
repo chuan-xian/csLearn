@@ -112,3 +112,39 @@
 1. require注意点
     - require导入模块可以不添加.js后缀，按照.js、.jsom、.node文件依次查找，无论找到哪一种类型的文件，最后都返回给我们一个js对象
     - 导入自定义模块必须添加路径，导入系统模块或者第三方模块可以不用添加路径
+
+# 三、包
+1. 什么是包？
+    - 编写代码的时候尽量遵守单一原则，也就是一个函数尽量只做一件事，不要一个函数既读取数据，又写入数据，又生成数据，代码维护难度加大。
+    - 在模块化的开发中也一样，在一个模块(一个js文件中)尽量只完成一个特定的功能，所以有些比较复杂的功能可能需要多个模块组成。例如：jQuery选择器相关的模块在A模块，CSS相关的代码在B模块，...这样，我们就需要把这些模块组合在一起，才能构成完整的jQuery。维护多个模块之间关系的东西就是包。
+
+2. NodeJS包管理
+    - 在NodeJS中为了方便开发人员发布、安装和管理包，推出了一个包管理工具NPM(Node Package Manager)
+    - NPM在搭建NodeJS环境时已经附带自动安装好
+    - 通过NPM可以快速找到、安装、升级、卸载我们开发中相关的包
+
+3. 管理包(npm官网：https://www.npmjs.com)
+    - 终端输入*npm config list*可以查看当前npm的相关配置，其中prefix选项表示全局安装的路径，全局安装的包存储在该目录下
+    - 全局安装(一般用于安装全局使用的工具，在所有项目中都可以使用，存储在全局node_modules中)
+        - *npm install -g 包名*  // 默认安装最新版
+        - *npm uninstall -g 包名*  // 卸载包
+        - *npm update -g 包名*  // 更新包
+
+    - 本地安装(一般用于安装当前项目使用的包，存储在当前项目node_modules中)
+        - *npm install 包名*  // 本地安装包
+        - *npm uninstall 包名* // 删除本地安装的包
+        - *npm update 包名* // 更新本地安装的包
+        - 本地安装就是进入项目所在的文件(package.json文件所在目录)，然后执行上面的命令进行安装
+
+    - 安装指定版本的包，在包名后直接*@指定版本号*，如*npm install -g webpack@3.0*就是安装webpack的3.0版本
+    - 通过update更新包的时候可能会不成功，可以通过先卸载当前版本，然后再直接安装，默认安装时最新版本
+
+4. 包描述文件：package.json，定义了当前项目所需要的各种模块，以及项目的配置信息(比如名称、版本、许可证等元信息)
+    - *npm install* 命令会根据这个配置文件，自动下载所需要的模块，也就是配置项目所需要的运行和开发环境
+    - *package.json*文件中，不能加入任何注释
+    - *dependencies*：生产环境所依赖的包，一个关联数组，由包的名称和版本号组成
+    - *devDependencies*：开发环境所依赖的包，一个关联数组，由包的名称和版本号组成
+    - 通过*npm install webpack@3.0*和*npm install webpack --save*安装的包都是把依赖添加到*dependencies*中，而通过*npm install webpack --save-dev*安装的依赖包都是添加依赖到*devDependencies*中
+    - 将项目拷贝给别人的时候，或者发布的时候，我们不会将node_modules也给别人，因为太大。并且有的包可能只是在开发阶段需要，但是在上线阶段不需要，所以需要分开指定。
+    - 其他人拿到不包含*node_modules*的项目后，在项目中执行*npm install*命令，npm包管理器就会根据*package.json*配置文件自动安装所需依赖(包括*dependencies*和*devDependencies*中的全部依赖)。
+    - 执行*npm install --development*则安装*devDependencies*中的依赖，执行*npm insatll --production*则安装*dependencies*中的依赖
