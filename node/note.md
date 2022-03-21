@@ -9,3 +9,22 @@ node笔记
     - 将v8引擎集成到浏览器中，那么我们的js代码就会被浏览器执行
     - 将v8引擎嵌入到NodeJS中，那么我们写的js代码就会被NodeJS所执行
     
+3. 由于NodeJS中也集成了V8环境，所以浏览器可以解释执行JS代码
+    - 可以直接在命令行工具中编写执行js代码(REPL -- Read Eval Print Loop:交互式解释器)
+    - 可以在命令行工具中执行js代码文件中的js代码
+
+4. webstorm中配置node(视频004NodeJS执行JS代码)
+
+5. NodeJS环境和浏览器环境区别
+    - NodeJS环境和浏览器环境一样都是一个JS的运行环境，都可以执行JS代码，但是由于宿主不同所以特点也有所不同
+    1. 内置对象不同
+        - 浏览器环境中提供了window全局对象
+        - NodeJS环境中的全局变量不叫window，叫global
+
+    2. this默认指向不同
+        - 浏览器环境中全局this默认指向window
+        - NodeJS环境中全局this默认指向空对象{}
+    
+    3. API不同
+        - 浏览器提供了操作节点的DOM相关API和操作浏览器的BOM相关的API
+        NodeJS环境中没有HTML节点也没有浏览器，所以NodeJS环境中没有DOM/BOM
