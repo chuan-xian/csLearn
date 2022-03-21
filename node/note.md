@@ -70,14 +70,14 @@
     - 在CommonJS中，每个文件中的变量、函数都是私有的， 对其他文件不可见
     - 在CommonJS中，每个文件中的变量、函数必须通过exports暴露(导出)之后，其他文件导入才可以使用
     - 在CommonJS中，想要使用其它文件暴露的变量、函数，必须通过require()导入模块才可以使用
-    ```CommonsJS(要导出的模块a.js)
+    ``` CommonsJS(要导出的模块a.js)
         let name = 'zhangsan';
         function add(a, b) {
             console.log(a + b);
         }
         exports.str = name;
     ```
-    ```导入前面的模块到本模块中
+    ``` 导入前面的模块到本模块中
         let aModule = require('./a.js');
         console.log(aModule.str);  // 输出'zhangsan'
     ```
