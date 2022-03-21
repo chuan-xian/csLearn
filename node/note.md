@@ -19,8 +19,8 @@
 5. NodeJS环境和浏览器环境区别
     - NodeJS环境和浏览器环境一样都是一个JS的运行环境，都可以执行JS代码，但是由于宿主不同所以特点也有所不同
     1. 内置对象不同
-        - 浏览器环境中提供了window全局对象
-        - NodeJS环境中的全局变量不叫window，叫global
+        - 浏览器环境中提供了`window全局对象`
+        - NodeJS环境中的全局变量不叫window，叫`global`
 
     2. this默认指向不同
         - 浏览器环境中全局this默认指向window
@@ -31,8 +31,8 @@
         NodeJS环境中没有HTML节点也没有浏览器，所以NodeJS环境中没有DOM/BOM
 
 6. 全局属性和方法
-    - __dirname:所在文件的路径(不包含该文件名)
-    - __filename:所在文件的绝对路径(包括该文件名)
+    - `__dirname`:所在文件的路径(不包含该文件名)
+    - `__filename`:所在文件的绝对路径(包括该文件名)
 
     ```
         setTimeout(function(){
@@ -103,14 +103,14 @@
 
 3. 一般开发中通过exports或者module.exports暴露，通过global方式不符合CommonJS规范，用的少
 4. 不论通过哪种方式暴露，在调用模块中，都需要先导入该模块
-5. exports和module.exports的差异：
-    - exports = name;暴露的变量和方法在调用模块中获取不到变量和方法，得到的是一个空对象
-    - module.exports = name;暴露的变量和方法可以获取到
+5. `exports`和`module.exports`的差异：
+    - `exports = name;`暴露的变量和方法在调用模块中获取不到变量和方法，得到的是一个空对象
+    - `module.exports = name;`暴露的变量和方法可以获取到
 
 
 ## 导入
 1. require注意点
-    - require导入模块可以不添加.js后缀，按照.js、.jsom、.node文件依次查找，无论找到哪一种类型的文件，最后都返回给我们一个js对象
+    - require导入模块可以不添加.js后缀，按照`.js`、`.jsom`、`.node`文件依次查找，无论找到哪一种类型的文件，最后都返回给我们一个js对象
     - 导入自定义模块必须添加路径，导入系统模块或者第三方模块可以不用添加路径
 
 # 三、包
@@ -124,27 +124,44 @@
     - 通过NPM可以快速找到、安装、升级、卸载我们开发中相关的包
 
 3. 管理包(npm官网：https://www.npmjs.com)
-    - 终端输入*npm config list*可以查看当前npm的相关配置，其中prefix选项表示全局安装的路径，全局安装的包存储在该目录下
-    - 全局安装(一般用于安装全局使用的工具，在所有项目中都可以使用，存储在全局node_modules中)
-        - *npm install -g 包名*  // 默认安装最新版
-        - *npm uninstall -g 包名*  // 卸载包
-        - *npm update -g 包名*  // 更新包
+    - 终端输入`npm config list`可以查看当前npm的相关配置，其中`prefix`选项表示全局安装的路径，全局安装的包存储在该目录下
+    - 全局安装(一般用于安装全局使用的工具，在所有项目中都可以使用，存储在全局`node_modules`中)
+        - `npm install -g 包名`  // 默认安装最新版
+        - `npm uninstall -g 包名`  // 卸载包
+        - `npm update -g 包名`  // 更新包
 
-    - 本地安装(一般用于安装当前项目使用的包，存储在当前项目node_modules中)
-        - *npm install 包名*  // 本地安装包
-        - *npm uninstall 包名* // 删除本地安装的包
-        - *npm update 包名* // 更新本地安装的包
-        - 本地安装就是进入项目所在的文件(package.json文件所在目录)，然后执行上面的命令进行安装
+    - 本地安装(一般用于安装当前项目使用的包，存储在当前项目`node_modules`中)
+        - `npm install 包名`  // 本地安装包
+        - `npm uninstall 包名` // 删除本地安装的包
+        - `npm update 包名` // 更新本地安装的包
+        - 本地安装就是进入项目所在的文件(`package.json`文件所在目录)，然后执行上面的命令进行安装
 
-    - 安装指定版本的包，在包名后直接*@指定版本号*，如*npm install -g webpack@3.0*就是安装webpack的3.0版本
-    - 通过update更新包的时候可能会不成功，可以通过先卸载当前版本，然后再直接安装，默认安装时最新版本
+    - 安装指定版本的包，在包名后直接`@指定版本号`，如`npm install -g webpack@3.0`就是安装`webpack`的`3.0`版本
+    - 通过`update`更新包的时候可能会不成功，可以通过先卸载当前版本，然后再直接安装，默认安装是最新版本
 
-4. 包描述文件：package.json，定义了当前项目所需要的各种模块，以及项目的配置信息(比如名称、版本、许可证等元信息)
-    - *npm install* 命令会根据这个配置文件，自动下载所需要的模块，也就是配置项目所需要的运行和开发环境
-    - *package.json*文件中，不能加入任何注释
-    - *dependencies*：生产环境所依赖的包，一个关联数组，由包的名称和版本号组成
-    - *devDependencies*：开发环境所依赖的包，一个关联数组，由包的名称和版本号组成
-    - 通过*npm install webpack@3.0*和*npm install webpack --save*安装的包都是把依赖添加到*dependencies*中，而通过*npm install webpack --save-dev*安装的依赖包都是添加依赖到*devDependencies*中
-    - 将项目拷贝给别人的时候，或者发布的时候，我们不会将node_modules也给别人，因为太大。并且有的包可能只是在开发阶段需要，但是在上线阶段不需要，所以需要分开指定。
-    - 其他人拿到不包含*node_modules*的项目后，在项目中执行*npm install*命令，npm包管理器就会根据*package.json*配置文件自动安装所需依赖(包括*dependencies*和*devDependencies*中的全部依赖)。
-    - 执行*npm install --development*则安装*devDependencies*中的依赖，执行*npm insatll --production*则安装*dependencies*中的依赖
+4. 包描述文件：`package.json`，定义了当前项目所需要的各种模块，以及项目的配置信息(比如名称、版本、许可证等元信息)
+    - `npm install`命令会根据这个配置文件，自动下载所需要的模块，也就是配置项目所需要的运行和开发环境
+    - `package.json`文件中，不能加入任何注释
+    - `dependencies`：生产环境所依赖的包，一个关联数组，由包的名称和版本号组成
+    - `devDependencies`：开发环境所依赖的包，一个关联数组，由包的名称和版本号组成
+    - 通过`npm install webpack@3.0`和`npm install webpack --save`安装的包都是把依赖添加到`dependencies`中，而通过`npm install webpack --save-dev`安装的依赖包都是添加依赖到`devDependencies`中
+    - 将项目拷贝给别人的时候，或者发布的时候，我们不会将`node_modules`也给别人，因为太大。并且有的包可能只是在开发阶段需要，但是在上线阶段不需要，所以需要分开指定。
+    - 其他人拿到不包含`node_modules`的项目后，在项目中执行`npm install`命令，`npm`包管理器就会根据`package.json`配置文件自动安装所需依赖(包括`dependencies`和`devDependencies`中的全部依赖)。
+    - 执行`npm install --development`则安装`devDependencies`中的依赖，执行`npm insatll --production`则安装`dependencies`中的依赖
+
+# 四、资源下载镜像替换
+## nrm(推荐使用)
+1. 什么是nrm？
+    - 由于npm默认会去国外原官网下载资源，所以对于国内开发者来说下载会比较慢，所以就有人写了一个nrm工具，允许你将资源下载地址从国外切换到国内。
+        - `npm install -g nrm`  // 安装NRM
+        - `nrm --version`  // 查看是否安装成功
+        - `npm ls`  // 查看允许切换的资源地址
+        - `npm use taobao`  // 将下载地址切换到淘宝
+        - 后续下载包还是通过`npm install 包名`的方式，只是npm会把下载资源的地址自动替换为指定的国内地址
+        - PS：淘宝资源地址和国外的地址内容完全同步。淘宝镜像和官方同步频率目前约为10分钟一次
+
+## cnpm(不推荐使用)
+1. cnpm和nrm的功能一致
+    - `npm install cnpm -g -registry=https://registry.npm.taobao.org`：安装cnpm
+    - `cnpm -v`：查看是否安装成功
+    - 安装包的时候通过`cnpm`，而不是继续使用`npm`
