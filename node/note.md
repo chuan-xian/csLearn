@@ -125,6 +125,7 @@
 
 3. 管理包(npm官网：https://www.npmjs.com)
     - 终端输入`npm config list`可以查看当前npm的相关配置，其中`prefix`选项表示全局安装的路径，全局安装的包存储在该目录下
+    - `npm init -y`：进入工作目录后，先执行该命令，初始化生产配置文件`package.json`文件
     - 全局安装(一般用于安装全局使用的工具，在所有项目中都可以使用，存储在全局`node_modules`中)
         - `npm install -g 包名`  // 默认安装最新版
         - `npm uninstall -g 包名`  // 卸载包
@@ -165,3 +166,33 @@
     - `npm install cnpm -g -registry=https://registry.npm.taobao.org`：安装cnpm
     - `cnpm -v`：查看是否安装成功
     - 安装包的时候通过`cnpm`，而不是继续使用`npm`
+
+## yarn
+1. 什么是yarn？
+    - yarn是由Facebook、Google、Exponent和Tidle联合推出的一个新的JS包管理工具，主要是为了弥补npm 5.0之前的一些缺陷。在npm 5.0之前，yarn的优势明显，但是现在没什么优势了，所以仍然推荐继续使用npm工具。
+
+2. npm曾经的缺陷：
+    - `npm install`安装的时候极慢。npm是按照队列执行每个package，也就是说必须要等到当前package安装完成后，才能继续后面的安装。
+    - 同一个项目中，`npm install`的时候无法保持所安装依赖版本的一致性
+        - `3.0.0`：明确安装的版本就是3.0.0版本
+        - `~3.0.0`：表示安装3.0.x中最新的版本
+        - `^3.0.3`：表示安装3.x.x中最新的版本
+
+3. yarn曾经的优点：
+    - 速度快：一是并行安装，即同步执行所有任务，同时安装所有的包依赖，提高了性能，二是离线模式，如果之前已经安装过一个软件包，用yarn再次安装的时候，直接从本地缓存中获取安装，不会再像npm一样从网络上获取安装
+    - 安装版本统一：为了防止拉取到不同的版本，yarn有一个锁定文件(`lock file`)记录了被确切安装上的模块的版本号
+
+4. npm现状：
+    - 在工作目录下，除了`package.json`文件外，还有一个`package-lock.json`文件，里面写的是依赖包的具体版本信息，解决了原来版本一致性问题。
+
+5. yarn的安装
+    - `npm install -g yarn`：全局安装yarn
+    - `yarn --version`：检查是否安装成功
+
+6. yarn的使用
+    - `yarn init -y`：先进入工作目录，然后初始化当前目录生成`packag.json`文件
+    - `yarn add 包名`或`yarn add 包名 --save`或`yarn add 包名 --save-dev`：安装指定包
+    - `yarn upgrade 包名 --last`：更新到最新版本
+    - `yarn global add/upgrade/remove `：全局安装/更新/删除包
+
+总结：使用npm就对了
