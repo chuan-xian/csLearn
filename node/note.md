@@ -28,3 +28,21 @@ node笔记
     3. API不同
         - 浏览器提供了操作节点的DOM相关API和操作浏览器的BOM相关的API
         NodeJS环境中没有HTML节点也没有浏览器，所以NodeJS环境中没有DOM/BOM
+
+6. 全局属性和方法
+    - __dirname:所在文件的路径(不包含该文件名)
+    - __filename:所在文件的绝对路径(包括该文件名)
+
+    ```
+        setTimeout(function(){
+            // 1s后输出123
+            console.log(123);
+        }, 1000)
+    ```
+    ```
+        setInterval(function(){
+            // 每隔1s输出一次123
+            console.log(123);
+        }, 1000)
+    ```
+    - consloe：输出内容
