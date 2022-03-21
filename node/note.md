@@ -1,6 +1,6 @@
-node笔记
+# node笔记
 
-# 概述
+# 一、概述
 1. 什么是Node.js
 - nodejs是一个基于“chrome V8”引擎的JavaScript运行环境
 
@@ -48,4 +48,36 @@ node笔记
     ```
     - consloe：输出内容
 
-# 模块化开发
+# 二、模块化开发
+1. 什么是模块？
+    - 在浏览器开发中为了避免命名冲突，方便维护等，我们采用类或者立即执行函数的方式来封装JS代码，来避免命名冲突和提升代码的可维护性。其实这里的一个类或者一个立即执行函数就是浏览器开发中的一个模块。
+    ```
+        let obj = {
+            // 模块中的业务逻辑代码
+        };
+    ```
+    ```
+        (function(){
+            // 模块中的业务逻辑代码
+        })()
+    ```
+    - 存在问题：没有标准或规范，不能统一所有开发全部用类或者立即执行函数
+
+2. NodeJS中的模块
+    - NodeJS采用CommonJS规范实现了模块系统；
+    - CommonJS规范规定了如何定义一个模块，如何暴露(导出)模块中的变量函数，以及如何使用定义好的模块
+    - 在CommonJS中，一个文件就是一个模块
+    - 在CommonJS中，每个文件中的变量、函数都是私有的， 对其他文件不可见
+    - 在CommonJS中，每个文件中的变量、函数必须通过exports暴露(导出)之后，其他文件导入才可以使用
+    - 在CommonJS中，想要使用其它文件暴露的变量、函数，必须通过require()导入模块才可以使用
+    ```CommonsJS(要导出的模块a.js)
+        let name = 'zhangsan';
+        function add(a, b) {
+            console.log(a + b);
+        }
+        exports.str = name;
+    ```
+    ```导入前面的模块到本模块中
+        let aModule = require('./a.js');
+        console.log(aModule.str);  // 输出'zhangsan'
+    ```
