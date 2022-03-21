@@ -49,6 +49,7 @@
     - consloe：输出内容
 
 # 二、模块化开发
+## 导出导入
 1. 什么是模块？
     - 在浏览器开发中为了避免命名冲突，方便维护等，我们采用类或者立即执行函数的方式来封装JS代码，来避免命名冲突和提升代码的可维护性。其实这里的一个类或者一个立即执行函数就是浏览器开发中的一个模块。
     ```
@@ -75,9 +76,39 @@
         function add(a, b) {
             console.log(a + b);
         }
-        exports.str = name;
+        // 暴露方式一
+        // exports.str = name;
+        // exports.fn = add;
+
+        // 暴露方式二
+        // module.exports.str = name;
+        // module.exports.fn = add;
+
+        // 暴露方式三
+        global.str = name;
+        global.fn = add;
     ```
     ``` 导入前面的模块到本模块中
         let aModule = require('./a.js');
-        console.log(aModule.str);  // 输出'zhangsan'
+        
+        // 暴露方式一和二都需要通过aModule来调用暴露的变量和函数
+        // console.log(aModule.str);  // 输出'zhangsan'
+        // aModule.fn(10, 20);  // 30
+
+        // 暴露方式三，全局变量就不需要通过amodule调用暴露的变量和方法
+        console.log(str);
+        let res = fn(20, 30);
+        console.log(res);
     ```
+
+3. 一般开发中通过exports或者module.exports暴露，通过global方式不符合CommonJS规范，用的少
+4. 不论通过哪种方式暴露，在调用模块中，都需要先导入该模块
+5. exports和module.exports的差异：
+    - exports = name;暴露的变量和方法在调用模块中获取不到变量和方法，得到的是一个空对象
+    - module.exports = name;暴露的变量和方法可以获取到
+
+
+## 导入
+1. require注意点
+    - require导入模块可以不添加.js后缀，按照.js、.jsom、.node文件依次查找，无论找到哪一种类型的文件，最后都返回给我们一个js对象
+    - 导入自定义模块必须添加路径，导入系统模块或者第三方模块可以不用添加路径
