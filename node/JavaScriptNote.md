@@ -4,7 +4,7 @@
 1. 函数是专门用来封装代码的，函数是一段可以随时被反复执行的代码块
 
 2. 语法格式
-    - ```
+    ```
         function funcName( 形参列表 ) {
             // 被封装的代码
         }
@@ -12,11 +12,11 @@
 
 3. 函数的参数
     - 可以提供默认参数，如果不提供实参，就使用默认值
-    - ```
-        function add(num1 = 10, num2 = 20) {
-            return num1 + num2;
-        }
-    ```
+        ```
+            function add(num1 = 10, num2 = 20) {
+                return num1 + num2;
+            }
+        ```
     - 实参和形参的个数可以不一致，实参多余形参，则多余的实参被舍弃，形参多余实参，则多余的形参被赋值为undefined；
 
 4. 函数的返回值
@@ -24,12 +24,12 @@
 
 5. 函数的本质
     - JavaScript中的函数和数组一样，都是引用数据类型(对象类型)。既然是一种数据类型，那就可以保存到一个变量中
-    - ```
-        let func = function () {
-            console.log("函数也是对象类型");
-        };  // 这是赋值语句，要添加分号
-        func();  //输出：函数也是对象类型
-    ```
+        ```
+            let func = function () {
+                console.log("函数也是对象类型");
+            };  // 这是赋值语句，要添加分号
+            func();  //输出：函数也是对象类型
+        ```
 6. arguments参数
     - 每个函数内部都保存了一个arguments参数，用于保存所有传递给函数的实参。
     - arguments是一个伪数组，具有`.length`属性，可以使用数组下标，但没有`push`、`pop`等方法；
@@ -39,26 +39,54 @@
     - 在形参处用扩展运算符接收实参时，因为它会从当前实参开始，接收后续的全部实参，所以扩展运算符只能写在最后。
 
 8. 匿名函数
+
     - 有名函数
-    - ```
-        // 有名函数一
-        function say() {
-            return 'hello world';
-        }
-        // 有名函数二
-        let say = function () {
-            return 'world hello';
-        };
-        say();
-    ```
+        ```
+            // 有名函数一
+            function say() {
+                return 'hello world';
+            }
+            // 有名函数二
+            let say = function () {
+                return 'world hello';
+            };
+            say();
+        ```
 
     - 匿名函数：不能够只定义不使用
-    - ```
-        (function () {
-            console.log(''hello world);
-        })()
-    ```
+        ```
+            (function () {
+                console.log(''hello world);
+            })()
+        ```
     - 匿名函数引用场景
+        - 作为其它函数的参数
+            ```
+                function test(fn){
+                    fn()
+                }
+                test(function(){
+                    console.log('hello world');
+                });
+            ```
+        - 作为其它函数的返回值
+            ```
+                // 在JS中函数可以嵌套定义
+                function test() {
+                    let say = function(){
+                        console.log('hello world');
+                    }
+                    return say;
+                }
+                let fn = test();
+                fn();
+            ```
+        - 作为一个立即执行的函数(立即执行函数可以是有名函数，也可是匿名函数)
+            ```
+                (function(){
+                    console.log('hello world');
+                })();
+            ```
 
 
 
