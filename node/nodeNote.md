@@ -239,6 +239,7 @@
     - `path.basename('路径名');`：获取路径名的最后一部分；
     - `path.dirname('路径名');`：获取路径名的前面部分，舍弃最后一个部分；
     - `path.extname('路径名');`：获取路径名的扩展名，包括.符号
+    - `pth.isAbsolute('路径名');`：判断路径名是否为绝对路径；
     - `path.sep`：当前系统的路径分隔符，Linux为/，Windows为\
     - `path.delimiter`：当前系统的环境变量分隔符，Linux为:，Windows为;
     - `path.parse('路径名');`：把路径名转换成对象，如‘/root/home/documents/index.html’转换如下：
@@ -257,8 +258,15 @@
     - `path.relative('路径1', '路径2');`：计算相对路径，即从路径1指定的文件或目录去到路径2指定多个文件或目录所要的相对路径
     - `path.resolve('路径1', '路径2', '路径3'...);`：解析路径，类似将路径拼接，../会返回上一级目录。要注意的是如果某个路径为绝对路径(/开头)，则该路径前面的全部路径都会被忽略
 
-
-
-
-
 补充：Path对象的代码查看node/source/pathObject.js文件
+
+## 文件模块
+
+1. 文件模块fs
+    - 封装了各种文件相关的操作；
+    - 该模块和path一样，也没有添加到global上，使用前需要手动引入：`let fs = require('fs')`；
+
+2. 查看文件状态
+
+
+补充：文件模块fs相关的代码查看node/source/fs.js文件
