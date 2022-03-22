@@ -87,6 +87,19 @@
                     console.log('hello world');
                 })();
             ```
+9. 箭头函数
+    - 箭头函数是ES6的语法
+    ```
+        // 1.通用格式
+        let funcName = () => {
+            // 自定义函数体
+        }
+
+        // 2. 如果箭头函数的参数只有一个，可以省略圆括号()，如果箭头函数的函数体只有一句，可以省略花括号{}
+        let realName = 'zhangsan';
+        let say = nameArg => console.log(nameArg);
+        say(realName);
+    ```
 
 
 

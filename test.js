@@ -59,3 +59,8 @@ function test(fn){
 test(function(){
     console.log('hello world');
 });
+
+
+let realName = 'zhangsan';
+let say = nameArg => console.log(nameArg);
+say(realName);
