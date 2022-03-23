@@ -49,18 +49,61 @@
 // console.log(pathName);
 
 
-(function () {
-    console.log('hello world');
-})();
+// (function () {
+//     console.log('hello world');
+// })();
 
-function test(fn){
-    fn()
-}
-test(function(){
-    console.log('hello world');
-});
+// function test(fn){
+//     fn()
+// }
+// test(function(){
+//     console.log('hello world');
+// });
 
 
-let realName = 'zhangsan';
-let say = nameArg => console.log(nameArg);
-say(realName);
+// let realName = 'zhangsan';
+// let say = nameArg => console.log(nameArg);
+// say(realName);
+
+// let say = nameArg => console.log(nameArg);
+// let realName = 'zs';
+// say(realName);
+
+// let realName = window.prompt('please input your name:');
+// alert(realName);
+
+let arg = 123123;
+let boolvar = true;
+
+// let res = arg.toString();
+// console.log(res, typeof res);
+// res = boolvar.toString();
+// console.log(res, typeof res);
+
+// let res = String(arg);
+// console.log(res, typeof res);
+// res = String(boolvar);
+// console.log(res, typeof res);
+// res = String(true);
+// console.log(res, typeof res);
+// res = String(123);
+// console.log(res, typeof res);
+let res = String(null);
+console.log(res, typeof res);
+res = String(undefined);
+console.log(res, typeof res);
+
+// arg = 123;
+// let res = arg + "";
+// console.log(res, typeof res);
+
+
+
+
+
+
+
+
+
+
+

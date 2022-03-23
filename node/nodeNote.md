@@ -266,7 +266,169 @@
     - 封装了各种文件相关的操作；
     - 该模块和path一样，也没有添加到global上，使用前需要手动引入：`let fs = require('fs')`；
 
-2. 查看文件状态
+2. 获取文件或目录的信息
+    - `fs.stat('路径名', function(err, stats){//函数代码});`
+        - 这是一个异步函数，在所有的主线程同步函数执行完毕后，它才会执行。
+        - 第一个参数是路径名，可以是一个目录，则获取目录的信息，如__dirname，也可以是一个文件的路径，则获取该文件的信息，如__filename。
+        - 第二个参数是一个回调函数，常用匿名函数。也有两个参数，第一个参数是获取文件或目录失败后存储的信息，获取成功则为空值null。第二个参数是获取到的文件或目录的信息，获取失败则为undefined。
+        ```
+            fs.stat(__filename, function(err, stats) {
+                // console.log(stats);
+                if (stats.isFile()) {
+                    console.log('当前获取了一个文件');
+                }else if (stats.isDirectory()) {
+                    console.log('当前获取了一个文件夹');
+                }
+            });
+        ```
+    - `let stats = fs.statSync('路径名');`
+        - 这是一个同步函数，返回获取后的信息。
+        ```
+            let stats = fs.statSync('./a.html');
+            console.log(stats);
+        ```
+    - 获取后的信息存储在stats中，可以通过stats.isFile()或stats.isDirectory()判断是否为文件或目录。
 
+3. 读取文件
+    - `fs.readFile('路径名', '编码方式', function(err, data){//函数代码});`：
+        - 该函数为异步函数。
+        - 第一个参数为文件的路径名。
+        - 第三个参数是一个回调函数，该回调函数有两个参数，第一个为err，表示读取文件失败后存储的信息，第二个参数为data，读取文件后存储文件中的内容。默认存储为Buffer字节类型。
+        - 第二个参数可选。如果没有指定第二个参数，那么读取文件后获取的数据是该文件内容的Buffer形式，转为字符串需要data.toString()。而如果指定第二个参数则自动把data转为该编码形式的字符串。常指定为'utf-8'。
+        ```
+            fs.readFile(__filename, 'utf-8', function(err, data){
+                // console.log(data);
+                // console.log(data.toString()); 
+            });
+        ```
+    - `let str = fs.readFileSync('路径名', '编码方式');`：
+        - 这是一个同步方法。
+        - 第一个参数为要获取的文件的路径名。
+        - 第二个参数可选，指定编码方式。如果不指定则获取后的数据存储为Buffer类型，指定则自动转为该编码方式的字符串，常设为'utf-8'。
+        - 获取成功后返回文件中的内容。
+        ```
+            let str = fs.readFileSync(__filename, 'utf-8');
+            console.log(str);
+        ```
 
+4. 写入文件
+    - `fs.writeFile('路径名', '写入内容', '编码方式', function(err){//回调函数代码});`：
+        - 该函数是一个异步函数。
+        - 回调函数有一个err参数，如果写入失败则存储失败信息。
+        ```
+            fs.writeFile('./a.txt', 'everything', 'utf-8', function(err){
+                if (err) {
+                    throw new Error('写入数据失败!');
+                }else {
+                    console.log('写入数据成功!');
+                }
+            })
+        ```
+    - `let str = fs.writeFileSync('路径名', '写入内容', '编码方式');`：
+        - 写入成功则返回undefined。
+        ```
+            let str = fs.writeFileSync('./.gitignore', 'ha');
+            console.log(str);
+        ```
+    - 通过fs.writeFile()或者fs.writeFileSync()方式写入文件中的内容，会覆盖原来文件中的内容。
+
+5. 追加文件中的数据
+    - `fs.appenFile('路径名', '追加的内容', '编码方式', function(err){//回调函数代码})`：
+        ```
+            fs.appendFile('./.gitignore', ' new Thing', 'utf-8', function(err){
+                if (err) {
+                    throw new Error('写入数据失败!');
+                }else {
+                    console.log('写入数据成功!');
+                }
+            }); 
+        ```
+    - `let res = fs.appenFileSync('路径名', '追加的内容', '编码方式');`：
+        - 追加内容成功则返回undefined。
+        ```
+            let res = fs.appendFileSync('./.gitignore', ' more thing');
+            console.log(res);
+        ```
+6. 分批读写文件(大文件操作)：
+    - 前面读写文件的时候是一次读取写入，即将文件一次提取出来写入内存或者硬盘中。如果是大文件，可能会内存不够、计算机卡顿等。
+    - `fs.createReadStream();`：分批读取文件
+        ```
+            // 1. 创建一个读取流
+            let readStream = fs.createReadStream('./.gitignore', {
+                // 默认读取的数据放入Buffer中，指定为utf-8则转为字符串
+                encoding: 'utf-8',
+                // 每次读取数据的大小，单位是字节
+                highWaterMark: 1
+            })
+            // 2. 该读取流通过事件监听读取数据，共有四个事件，分别为open、error、data、close
+            readStream.on('open', function() {
+                console.log('读取流和文件建立关系成功，即打开文件成功!');
+            });
+            readStream.on('error', function() {
+                console.log('打开文件失败!');
+            });
+            // data事件方法的回调函数有参数，每次读取到的数据都存在data中
+            readStream.on('data', function(data) {
+                console.log('每次读取到的参数：', data);
+            });
+            readStream.on('close', function() {
+                console.log('数据读取完后关闭文件!');
+            });
+        ```
+    - `fs.createWriteStream();`：分批写入文件(也是覆盖写入)
+        ```
+            // 1. 创建一个写入流
+            let writeStream = fs.createWriteStream('./.gitignore', {encoding: 'utf8'});
+            // 2. 监听写入流事件，
+            writeStream.on('open', function() {
+                console.log('表示打开文件成功');    
+            })
+            writeStream.on('error', function() {
+                console.log('表示打开文件失败');
+            })
+            writeStream.on('close', function() {
+                console.log('表示关闭文件');
+            })
+            // 3. 写入数据
+            let data = '我是即将写入的数据';
+            let index = 0;
+            let timeId = setInterval(function() {
+                let ch = data[index];
+                index++;
+                // 4. 真正写入数据
+                writeStream.write(ch);
+                // 5. 清除计时器
+                if (index == data.length) {
+                    clearInterval(timeId);
+                    // 6. 写入流要手动关闭
+                    writeStream.end();
+                }
+            }, 2000);
+        ```
+    - 分批读写练习之复制
+    ```
+        let fs = require('fs');
+
+        let readStream = fs.createReadStream('./test.mp4', {highWaterMark: 1000000});
+        let writeStream = fs.createWriteStream('./back.mp4');
+
+        readStream.on('open', function(){
+            console.log('文件打开成功!');
+        });
+        readStream.on('error', function() {
+            console.log('文件打开失败!');
+        });
+        readStream.on('data', function(data) {
+            console.log('写入数据中:');
+            writeStream.write(data);
+        });
+        readStream.on('close', function(){
+            console.log('写入完毕，关闭文件');
+            writeStream.end();
+        });
+
+        writeStream.on('open', function() {});
+        writeStream.on('error', function() {});
+        writeStream.on('close', function() {});
+    ```
 补充：文件模块fs相关的代码查看node/source/fs.js文件
