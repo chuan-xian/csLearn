@@ -431,4 +431,46 @@
         writeStream.on('error', function() {});
         writeStream.on('close', function() {});
     ```
+    - 实际开发中的复制操作
+        ```
+            let readStream = fs.createReadStream('./test.mp4');
+            let writeStream = fs.createWriteStream('./ok.mp4');
+            readStream.pipe(writeStream);
+        ```
+7. 目录操作
+    - `fs.mkdir('目录名', function(err){})`：创建目录
+    ```
+        fs.mkdir('./abc', function(err){
+            if (err) {
+                throw new Error('目录创建失败!');
+            }else{
+                console.log('目录创建成功!');
+            }
+        });
+    ```
+    - `fs.rmdir('目录名', function(err){})`：删除目录
+    ```
+        fs.rmdir('./abc', function(err){
+            if (err) {
+                throw new Error('删除目录失败');
+            }else{
+                console.log('删除目录成功');
+            }
+        });
+    ```
+    - `fs.readdir('目录名', function(err, files) {})`：读取目录
+    ```
+        fs.readdir('./', function(err, files) {
+            if (err) {
+                throw new Error('读取目录失败');
+            }else {
+                files.forEach(function(obj) {
+                    let pathName = path.join(__dirname, obj);
+                    console.log(pathName);
+                })
+            }
+        })
+    ```
+
 补充：文件模块fs相关的代码查看node/source/fs.js文件
+

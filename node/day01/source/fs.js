@@ -1,5 +1,6 @@
 // 导入fs文件模块到当前文件中
 let fs = require('fs');
+let path = require('path');
 
 /**
  * 1. fs.stat是一个异步函数，第一个参数为要查看的文件的路径名
@@ -95,38 +96,69 @@ let fs = require('fs');
 /**
  * 分批写入数据
 */
-// 1. 创建一个写入流
-let writeStream = fs.createWriteStream('./.gitignore', {encoding: 'utf8'});
-// 2. 监听写入流事件，
-writeStream.on('open', function() {
-    console.log('表示打开文件成功');    
-})
-writeStream.on('error', function() {
-    console.log('表示打开文件失败');
-})
-writeStream.on('close', function() {
-    console.log('表示关闭文件');
-})
-// 3. 写入数据
-let data = '我是即将写入的数据';
-let index = 0;
-let timeId = setInterval(function() {
-    let ch = data[index];
-    index++;
-    // 4. 真正写入数据
-    writeStream.write(ch);
-    // 5. 清除计时器
-    if (index == data.length) {
-        clearInterval(timeId);
-        // 6. 写入流要手动关闭
-        writeStream.end();
+// // 1. 创建一个写入流
+// let writeStream = fs.createWriteStream('./.gitignore', {encoding: 'utf-8'});
+// // 2. 监听写入流事件，
+// writeStream.on('open', function() {
+//     console.log('表示打开文件成功');    
+// })
+// writeStream.on('error', function() {
+//     console.log('表示打开文件失败');
+// })
+// writeStream.on('close', function() {
+//     console.log('表示关闭文件');
+// })
+// // 3. 写入数据
+// let data = '我是即将写入的数据';
+// let index = 0;
+// let timeId = setInterval(function() {
+//     let ch = data[index];
+//     index++;
+//     // 4. 真正写入数据
+//     writeStream.write(ch);
+//     // 5. 清除计时器
+//     if (index == data.length) {
+//         clearInterval(timeId);
+//         // 6. 写入流要手动关闭
+//         writeStream.end();
+//     }
+// }, 2000);
+
+// let readStream = fs.createReadStream('./test.mp4');
+// let writeStream = fs.createWriteStream('./ok.mp4');
+// readStream.pipe(writeStream);
+
+
+/**
+ * 目录操作练习
+*/
+// fs.mkdir('./abc', function(err){
+//     if (err) {
+//         throw new Error('目录创建失败!');
+//     }else{
+//         console.log('目录创建成功!');
+//     }
+// });
+
+// fs.rmdir('./abc', function(err){
+//     if (err) {
+//         throw new Error('删除目录失败');
+//     }else{
+//         console.log('删除目录成功');
+//     }
+// });
+
+fs.readdir('./', function(err, files) {
+    if (err) {
+        throw new Error('读取目录失败');
+    }else {
+        files.forEach(function(obj) {
+            let pathName = path.join(__dirname, obj);
+            console.log(pathName);
+        })
+
     }
-}, 2000);
-
-
-
-
-
+})
 
 
 
