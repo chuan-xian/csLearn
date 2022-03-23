@@ -41,10 +41,42 @@ server.listen(2000);
 
 ```
 
+6. 链式简写
+```
+// 创建服务器的时候直接传入一个监听回调函数，在尾部监听端口
+http.createServer(function(req, res) {
+    res.end('god');
+}).listen(3090)
 
+http.createServer((req, res) => {
+    res.end('dog');
+}).listen(4090);
+```
 
+## 路径分发
+1. 路径分发也称之为路由，就是根据不同的请求路径返回不同的数据。
 
+2. 如何根据不同的请求路径返回不同的数据？
+    - 通过请求监听方法中的request对象，我们可以获取到当前请求的路径。
+    - 通过判断请求路径的地址，就可以实现不同的请求路径返回不同的数据
 
-
+3. req本质：request本质上是一个`http.IncomingMessage`类的实例，其中有一个url属性，可以根据其判断用户的请求路径
+    ```
+        http.createServer((req, res) => {
+            res.writeHead(200, {
+                'Content-Type': 'text/plain; charset=utf-8'
+            })
+            if (req.url.startsWith('/index')) {
+                res.end('首页', );
+            }else if (req.url.startsWith('/login')) {
+                res.end('登录');
+            }else {
+                res.end(req.url);
+            }
+        }).listen(5000);
+    ```
+4. res本质：response对象本质上是一个`http.ServerResponse`类的实例
+    - `res.write('返回数据');`该函数只返回数据，并不结束请求，所以需要手动调用一次res.end()来结束请求，否则浏览器一直在刷新页面请求数据。
+    - `res.write('返回数据');`可以返回多次数据。
 
 

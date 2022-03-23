@@ -134,19 +134,54 @@ let path = require('path');
 // writeStream.write('aaa');
 // writeStream.end();
 
-let pathName = path.join(__dirname, 'taobao');
-let subPath = ['images', 'css', 'js', 'index.html'];
-fs.mkdir(pathName, function(err) {
-    if (err) throw err;
-    console.log(pathName);
-})
 
+// class CreateProject {
+//     constructor (rootPath, extPath) {
+//         this.rootPath = rootPath;
+//         this.extPath = extPath;
+//         this.subFiles = ['images', 'css', 'js', 'index.html'];
+//     }
+//     initProject() {
+//         let pathName = path.join(this.rootPath, this.extPath);
+//         fs.mkdirSync(pathName);
+//         this.subFiles.forEach(function(obj) {
+//             if (path.extname(obj) == '.html') {
+//                 let newPath = path.join(pathName, obj);
+//                 fs.writeFileSync(newPath);
+//             }else {
+//                 let newPath = path.join(pathName, obj);
+//                 fs.mkdirSync(newPath);
+//             }
+//         })
+//     }
+// }
 
+// let project = new CreateProject(__dirname, 'taobao');
+// project.initProject();
 
+class CreateProject {
+    constructor(rootPath, extPath) {
+        this.rootPath = rootPath;
+        this.extPath = extPath;
+        this.subFiles = ['images', 'css', 'js', 'index.html'];
+    }
 
+    initProject() {
+        let mainPath = path.join(this.rootPath, this.extPath);
+        fs.mkdirSync(mainPath);
+        this.subFiles.forEach(obj => {
+            let newPath = path.join(mainPath, obj);
+            if (path.extname(obj) == ".html") {
+                fs.writeFileSync(newPath);
+            }else {
+                fs.mkdirSync(newPath);
+            }
+        });
+    }
+}
 
-
-
+let project = new CreateProject(__dirname, 'JD');
+project.initProject();
 
 
 

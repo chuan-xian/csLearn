@@ -1,21 +1,39 @@
-// 1. 引入http模块
 let http = require('http');
-// 2. 创建一个server服务的实例化对象
-let server = http.createServer();
 
-// 3. 监听请求事件
-server.on('request', function(req, res) {
-    // 3.2 通过res.writeHead()在头部写入数据
+// let server = http.createServer();
+
+// server.on('request', function(req, res) {
+//     res.writeHead(200, {
+//         'Content-Type': 'text/palin; charset=utf-8'
+//     })
+//     res.end('中文代码');
+// });
+
+// server.listen(2080);
+
+// 创建服务器的时候直接传入一个监听回调函数，在尾部监听端口
+// http.createServer(function(req, res) {
+//     res.end('god');
+// }).listen(3090)
+
+// http.createServer((req, res) => {
+//     res.end('dog');
+// }).listen(4090);
+
+
+
+http.createServer((req, res) => {
     res.writeHead(200, {
-        // 3.3 中文乱码需要设置字符集为utf-8
-        "Content-Type": "text/plain; charset=utf-8"
-    });
-    // 3.1 res.end("返回的数据");结束请求并返回数据
-    res.end('新代码');
-});
-// 4. 指定监听端口
-server.listen(2000);
-
+        'Content-Type': 'text/plain; charset=utf-8'
+    })
+    if (req.url.startsWith('/index')) {
+        res.end('首页111', );
+    }else if (req.url.startsWith('/login')) {
+        res.end('登录222');
+    }else {
+        res.end(req.url);
+    }
+}).listen(5000);
 
 
 
