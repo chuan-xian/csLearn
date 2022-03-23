@@ -72,8 +72,8 @@
 // let realName = window.prompt('please input your name:');
 // alert(realName);
 
-let arg = 123123;
-let boolvar = true;
+// let arg = 123123;
+// let boolvar = true;
 
 // let res = arg.toString();
 // console.log(res, typeof res);
@@ -88,14 +88,61 @@ let boolvar = true;
 // console.log(res, typeof res);
 // res = String(123);
 // console.log(res, typeof res);
-let res = String(null);
-console.log(res, typeof res);
-res = String(undefined);
-console.log(res, typeof res);
+// let res = String(null);
+// console.log(res, typeof res);
+// res = String(undefined);
+// console.log(res, typeof res);
 
 // arg = 123;
 // let res = arg + "";
 // console.log(res, typeof res);
+
+let fs = require('fs');
+let path = require('path');
+
+// fs.stat('./test.js', function(err, stats) {
+//     if (err) {
+//         throw new Error('获取文件信息失败');
+//     }else{
+//         console.log(stats);
+//     }
+// })
+
+// let stats = fs.statSync('./test.js');
+// console.log(stats);
+
+// fs.readFile('./test.js', 'utf-8',function(err, data){});
+// let res = fs.readFileSync('./test.js', 'utf8');
+
+// fs.writeFile('./test.js', 'aa', 'utf8', function(err) {});
+// res = fs.writeFileSync('./test.js', 'utf8');
+
+// fs.appendFile('./test.js', 'aaa', 'utf8', function(err) {});
+// res = fs.appendFileSync('./test.js', 'aaaa', 'utf8');
+
+// let readStream = fs.createWriteStream('./test.js', {encoding: 'utf8', highWaterMark: 64});
+// let writeStream = fs.createWriteStream('./test.js', {encoding: 'utf8'});
+
+// readStream.on('open',function() {});
+// readStream.on('error',function() {});
+// readStream.on('data',function(data) {});
+// readStream.on('close',function() {});
+
+// writeStream.on('open', function() {});
+// writeStream.on('error', function() {});
+// writeStream.on('close', function() {});
+// writeStream.write('aaa');
+// writeStream.end();
+
+let pathName = path.join(__dirname, 'taobao');
+let subPath = ['images', 'css', 'js', 'index.html'];
+fs.mkdir(pathName, function(err) {
+    if (err) throw err;
+    console.log(pathName);
+})
+
+
+
 
 
 

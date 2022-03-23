@@ -132,21 +132,21 @@ let path = require('path');
 /**
  * 目录操作练习
 */
-// fs.mkdir('./abc', function(err){
-//     if (err) {
-//         throw new Error('目录创建失败!');
-//     }else{
-//         console.log('目录创建成功!');
-//     }
-// });
+fs.mkdir('./abc', function(err){
+    if (err) {
+        throw new Error('目录创建失败!');
+    }else{
+        console.log('目录创建成功!');
+    }
+});
 
-// fs.rmdir('./abc', function(err){
-//     if (err) {
-//         throw new Error('删除目录失败');
-//     }else{
-//         console.log('删除目录成功');
-//     }
-// });
+fs.rmdir('./abc', function(err){
+    if (err) {
+        throw new Error('删除目录失败');
+    }else{
+        console.log('删除目录成功');
+    }
+});
 
 fs.readdir('./', function(err, files) {
     if (err) {
