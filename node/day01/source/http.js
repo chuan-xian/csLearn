@@ -27,9 +27,9 @@ http.createServer((req, res) => {
         'Content-Type': 'text/plain; charset=utf-8'
     })
     if (req.url.startsWith('/index')) {
-        res.end('首页111', );
+        res.end('首页', );
     }else if (req.url.startsWith('/login')) {
-        res.end('登录222');
+        res.end('登录');
     }else {
         res.end(req.url);
     }

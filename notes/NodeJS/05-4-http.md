@@ -78,5 +78,4 @@ http.createServer((req, res) => {
 4. res本质：response对象本质上是一个`http.ServerResponse`类的实例
     - `res.write('返回数据');`该函数只返回数据，并不结束请求，所以需要手动调用一次res.end()来结束请求，否则浏览器一直在刷新页面请求数据。
     - `res.write('返回数据');`可以返回多次数据。
-
-
+    
