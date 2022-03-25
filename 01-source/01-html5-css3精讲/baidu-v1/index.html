@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度一下，你就知道</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            height: 200px;
+            /*background-color: blue;*/
+        }
+        .logo {
+            width: 300px;
+            height: 100px;
+            /*background-color: orange;*/
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .header>.logo>img {
+            width: 200px;
+        }
+
+        .nav {
+            width: 400px;
+            height: 40px;
+            /*background-color: skyblue;*/
+            margin: 30px auto;
+        }
+
+        .header>.nav>a {
+            display: inline-block;
+            line-height: 40px;
+            width: 50px;
+        }
+
+        .main {
+            height: 220px;
+            /*background-color: pink;*/
+        }
+
+        .main>.search {
+            width: 520px;
+            margin: 0 auto;
+        }
+
+        .main>.search>input[type=text] {
+            width: 400px;
+            height: 40px;
+        }
+        .main>.search>input[type=submit] {
+            width: 100px;
+            height: 45px;
+        }
+
+        .main>.section {
+            width: 300px;
+            height: 50px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .main>.section>a {
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+        }
+        .map {
+            text-align: center;
+        }
+        #more {
+            display: inline-block;
+            width: 100px;
+        }
+
+        .main>.map>a {
+            display: block;
+            width: 400px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        .footer {
+            height: 170px;
+            /*background-color: red;*/
+        }
+
+        .promote {
+            width: 400px;
+            height: 40px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .info {
+            width: 420px;
+            /*background-color: #ccc;*/
+            text-align: center;
+            margin: 0 auto;
+        }
+        .info>a{
+            display: inline-block;
+            width: 100px;
+        }
+        .copyright {
+            width: 400px;
+            margin: 10px auto;
+            padding-left: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="./imgs/logo.png" alt="百度一下，你就知道" title="百度一下，你就知道">
+        </div>
+        <div class="nav">
+            <a href="#">新 闻</a><a href="#">网 页</a><a href="#">贴 吧</a><a href="#">知 道</a><a href="#">音 乐</a><a href="#">图 片</a><a href="#">视 频</a><a href="#">地 图</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="search">
+            <input type="text">
+            <input type="submit" value="百度一下">
+        </div>
+        <div class="section">
+            <a href="#">百科</a><a href="#">文库</a><a href="#">hao123</a> | <a href="#" id="more">更多>></a>
+        </div>
+        <div class="map">
+            <a href="#">百度地图带你吃喝玩乐，全心全意为人民服务</a>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="promote">
+            <a href="#">把百度设为主页</a> <a href="#">安装百度卫士</a>
+        </div>
+        <div class="info">
+            <a href="#">加入百度推广</a>|<a href="#">搜索风云榜</a>|<a href="#">关于百度</a>|<a href="#">About Baidu</a>
+        </div>
+        <div class="copyright">&copy;2016 Baidu 使用百度前必读 京ICP证666号</div>
+    </div>
+</body>
+</html>

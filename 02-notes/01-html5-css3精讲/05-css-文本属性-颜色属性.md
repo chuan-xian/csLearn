@@ -12,6 +12,8 @@
 
 1.格式 `text-align: left | center |right;`
 
+2. 让图片、文本在父盒子中水平居中。
+
 ## 文本缩进属性
 
 1. 格式： `text-indent: 2em;`
