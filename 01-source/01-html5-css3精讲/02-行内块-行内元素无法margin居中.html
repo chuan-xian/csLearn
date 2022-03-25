@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>行内块元素无法margin居中</title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 0 auto;
+        }
+        .box2 {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: pink;
+        }
+        span {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <span class="sp">span</span>
+</body>
+</html>
