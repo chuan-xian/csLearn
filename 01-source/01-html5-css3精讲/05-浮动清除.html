@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动清除</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box1 {
+            background-color: pink;
+            clear: both;
+        }
+        .box2 {
+            background-color: skyblue;
+            /*clear: left;*/
+        }
+        .box1 p{
+            background-color: blue;
+            width: 100px;
+            float: left;
+            /*clear: both;*/
+        }
+        .box2>p {
+            background-color: orange;
+            width: 100px;
+            float: left;
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <p>文字内容p1</p>
+    <p>文字内容p2</p>
+    <p>文字内容p3</p>
+</div>
+<div class="box2">
+    <p>文字内容p4</p>
+    <p>文字内容p5</p>
+    <p>文字内容p6</p>
+</div>
+</body>
+</html>
