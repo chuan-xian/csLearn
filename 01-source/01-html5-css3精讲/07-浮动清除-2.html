@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-浮动清除-02</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            background-color: skyblue;
+            overflow: hidden;
+        }
+        p {
+            width: 50px;
+            background-color: orange;
+            float: left;
+        }
+        .box {
+            /*clear: both;*/
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <div class="box"></div>
+</div>
+</body>
+</html>
