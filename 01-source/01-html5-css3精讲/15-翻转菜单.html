@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>15-翻转菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 340px;
+            height: 400px;
+            background-color: skyblue;
+            margin: 50px auto;
+        }
+        .container>.topmenu {
+            width: 340px;
+            height: 40px;
+            background-color: #000;
+        }
+        .container>.topmenu>ul>li {
+            list-style: none;
+            float: left;
+            background-color: #0f0;
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            margin-left: 10px;
+        }
+        .secondmenu>li {
+            list-style: none;
+            width: 100px;
+            background-color: deeppink;
+            transform: rotateY(180deg);
+            transition: transform 1s, opacity 1s;
+            opacity: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .topmenu>ul>li:hover>.secondmenu>li{
+            transform: none;
+            opacity: 1;
+        }
+
+        .secondmenu>li:nth-child(1) {
+            transition-delay: 0ms;
+        }
+        .secondmenu>li:nth-child(2) {
+            transition-delay: 200ms;
+        }
+        .secondmenu>li:nth-child(3) {
+            transition-delay: 400ms;
+        }
+        .secondmenu>li:nth-child(4) {
+            transition-delay: 600ms;
+        }
+        .secondmenu>li:nth-child(5) {
+            transition-delay: 800ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="topmenu">
+            <ul>
+                <li>一级菜单
+                    <ul class="secondmenu">
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                    </ul>
+                </li>
+                <li>一级菜单
+                    <ul class="secondmenu">
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                    </ul>
+                </li>
+                <li>一级菜单
+                    <ul class="secondmenu">
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                        <li>二级菜单</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="text">我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字</div>
+    </div>
+</body>
+</html>
