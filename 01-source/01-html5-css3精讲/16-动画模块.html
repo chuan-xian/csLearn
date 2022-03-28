@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-动画模块</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #aaa;
+            /* 2. 调用这个动画*/
+            animation: move;
+            /* 3. 动画持续时长 */
+            animation-duration: 4s;
+        }
+        /* 1.创建一个动画 */
+        @keyframes move {
+            from {
+                margin-left: 0px;
+            }
+            to {
+                margin-left: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
