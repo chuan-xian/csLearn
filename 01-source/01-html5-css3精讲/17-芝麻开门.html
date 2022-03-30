@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>17-芝麻开门</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 400px;
+            height: 500px;
+            background-color: skyblue;
+            margin: 0 auto;
+            margin-top: 30px;
+            perspective: 400px;
+        }
+        .left {
+            width: 200px;
+            height: 500px;
+            background-color: pink;
+            float: left;
+            transition: transform 3s;
+            transform-origin: left center;
+        }
+        .right {
+            width: 200px;
+            height: 500px;
+            background-color: deeppink;
+            float: left;
+            transition: transform 3s;
+            transform-origin: right center;
+        }
+        .container:hover>.left {
+            transform-origin: left center;
+            transform: rotateY(50deg);
+        }
+        .container:hover>.right {
+            transform-origin: right center;
+            transform: rotateY(-50deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>

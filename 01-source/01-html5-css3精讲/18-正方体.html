@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18-正方体</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            /*background-color: skyblue;*/
+            margin-top: 50px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+        }
+        ul>li {
+            width: 100px;
+            height: 100px;
+            list-style: none;
+            transform-style: preserve-3d;
+            line-height: 100px;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        li:nth-child(1) {
+            background-color: pink;
+            transform: rotateX(90deg) translateZ(50px);
+        }
+        li:nth-child(2) {
+            background-color: orange;
+            transform: rotateX(180deg) translateZ(50px);
+        }
+        li:nth-child(3) {
+            background-color: wheat;
+            transform: rotateX(270deg) translateZ(50px);
+        }
+        li:nth-child(4) {
+            background-color: tomato;
+            transform: rotateX(360deg) translateZ(50px);
+        }
+        li:nth-child(5) {
+            background-color: gray;
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+        li:nth-child(6) {
+            background-color: springgreen;
+            transform: rotateY(90deg) translateZ(50px);
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+</body>
+</html>
