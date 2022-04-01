@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-数组遍历</title>
+    <script>
+        let arr = [1, 'mike', 20, 'm'];
+        // 数组遍历方式1
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+
+        // 数组遍历方式2
+        for (const arrKey in arr) {
+            console.log(arrKey);
+            console.log(arr[arrKey]);
+        }
+        // 数组遍历方式3
+        arr.forEach(function (data) {
+            console.log(data);
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>
