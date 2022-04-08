@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-数组解构赋值</title>
+    <script>
+        /*/!*let arr = [1, 2, 3, 4, 5];
+        let [a, b, c, d, e] = arr;
+        console.log(a, b, c, d, e);*!/
+
+        let arr = [1, 2, 3, [4, 5]];
+        // let [a, b, c, d] = arr;
+        // 1 2 3 [4, 5]
+        // console.log(a, b, c, d);
+        let [a, b, c, [d, e]] = arr;
+        // 1 2 3 4 5
+        console.log(a, b, c, d, e);*/
+        let arr = [1, 2, 3, 4];
+        // 1 2 3 4 10
+        let [a = 6, b = 7, c = 8, d = 9, e = 10] = arr;
+        console.log(a, b, c, d, e);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
