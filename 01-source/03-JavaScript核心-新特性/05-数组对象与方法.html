@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-数组对象与方法</title>
+    <script>
+/*        let arr = [1, 2, 3, 4, 5];
+        // push()在数组末尾添加元素，返回新数组长度
+        let res = arr.push('a');
+        console.log(arr, res);
+        // unshift()在数组首部添加元素，返回新数组长度
+        res = arr.unshift('0');
+        console.log(arr, res);
+
+        // pop()在数组尾部删除元素，返回被删除的元素
+        res = arr.pop();
+        console.log(arr, res);
+        // shift()在数组首部删除元素，返回被删除的元素
+        res = arr.shift();
+        console.log(arr, res);*/
+
+
+        /*console.log(arr instanceof Array);
+        console.log(Array.isArray(arr));
+        console.log(typeof arr);*/
+        /*let obj = {
+            name: 'mike',
+            age: 20,
+            say: function () {
+                console.log('name: ', name, 'age: ', age);
+            }
+        }
+        console.log(obj instanceof Object);*/
+
+
+
+/*        let arr = [1, 3, 5, 7, 9, 2, 4, 6, 8];
+        // reverse()逆序输出数组，对原数组的改变是永久的
+        console.log(arr.reverse());
+        console.log(arr);
+        // sort()根据ASCII字母表顺序排序，对原数组的改变是永久的
+        console.log(arr.sort());
+        console.log(arr);
+        // sort()对原数组排序，下面两种等效，a-b表示升序排列，b-a表示降序排列
+        arr.sort((a, b) => a - b);
+        arr.sort((a, b) => {return (a - b)});
+        console.log(arr);*/
+
+/*
+let arr = [1, 2, 1, 2, 3, 4, 5, 1, 2];
+let res = arr.indexOf(2);
+// 1
+console.log(res);
+res = arr.lastIndexOf(3);
+// 4
+console.log(res);
+*/
+
+
+/*let arr = [1, 2, 1, 2, 3, 4, 5, 1, 2];
+let newArr = [];
+for (let index = 0; index < arr.length; index++) {
+    if (newArr.indexOf(arr[index]) == -1) {
+        newArr[newArr.length] = arr[index];
+    }
+}
+console.log(newArr);*/
+
+
+
+/*let arr = [1, 2, 1, 2, 3, 4, 5, 1, 2];
+// toString()默认以逗号连接数组，返回新字符串，对原数组不影响
+let res = arr.toString();
+console.log(arr, res);
+
+// join默认以逗号连接数组，也可以指定字符作为连接符号
+res = arr.join();
+console.log(res);
+res = arr.join('-');
+console.log(res);*/
+
+
+/*let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let arr3 = [7, 8, 9];
+// concat()不影响原数组
+res = arr1.concat(arr2).concat(arr3);
+console.log(arr1, arr2, arr3, res);
+
+// slice(start, end)从原数组截取[start, end)部分元素，作为新数组返回，不影响原数组
+let out = res.slice(2, 4);
+console.log(res, out);
+
+// splice(start, count)在原数组中，从start处开始删除count个元素，用后续的元素替代，如果未指定后续元素，则只删除
+// 返回被删除的元素，作为一个新数组
+out = res.splice(2, 4);
+console.log(res, out);
+out = res.splice(2, 3, 'a', 'b');
+console.log(res, out);*/
+
+/*let str = '1,2,3,4,5';
+let res = str.split(',');
+console.log(str, res);*/
+
+let str = prompt('请输入三个数字，每个数字以逗号隔开');
+let res = str.split(',');
+for (let index1 = 0; index1 < 10; index1++) {
+    if (res.indexOf(index1.toString()) == -1) {
+        console.log(index1);
+    }
+}
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
