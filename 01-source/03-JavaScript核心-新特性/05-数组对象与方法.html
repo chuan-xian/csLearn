@@ -102,6 +102,7 @@ console.log(res, out);*/
 let res = str.split(',');
 console.log(str, res);*/
 
+/*
 let str = prompt('请输入三个数字，每个数字以逗号隔开');
 let res = str.split(',');
 for (let index1 = 0; index1 < 10; index1++) {
@@ -110,9 +111,19 @@ for (let index1 = 0; index1 < 10; index1++) {
     }
 }
 
+*/
 
 
+function getSum(a = 1, b = getNum()) {
+    return a + b;
+}
 
+function getNum() {
+    return 2;
+}
+
+let res = getSum(22);
+console.log(res);
 
 
 
