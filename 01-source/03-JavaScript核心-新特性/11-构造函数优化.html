@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-构造函数优化</title>
+    <script>
+        /*// 1. 声明一个函数，将该函数赋值给对象中的方法，这样不同的对象中的方法都是指向这个函数，节省了存储空间，提升了性能
+        function mySay() {
+            console.log(this.name, this.age);
+        }
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            // 2. 将全局函数赋值给构造函数中的方法，这样可以提升性能
+            this.say = mySay;
+        }
+
+        let person1 = new Person('Mike', 22);
+        let person2 = new Person('Kobe', 20);
+
+        person1.say();
+        person2.say();*/
+
+        /*let fns = {
+            say: function () {
+                console.log(this.name, this.age);
+            }
+        }
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.say = fns.say;
+        }
+
+        let person1 = new Person('Mike', 23);
+        let person2 = new Person('Kobe', 33);
+
+        person1.say();
+        person2.say();*/
+
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        Person.prototype = {
+            say: function () {
+                console.log(this.name, this.age, this.sex);
+            }
+        }
+
+        let person1 = new Person('Mike', 20, 'm');
+        let person2 = new Person('Kobe', 22, 'w');
+
+        person1.say();
+        person2.say();
+
+        console.log(Person.prototype.constructor);
+        person1.__proto__.say();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
