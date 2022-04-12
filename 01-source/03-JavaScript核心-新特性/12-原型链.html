@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-原型链</title>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype = {
+            constructor: Person,
+            currentValue: 'oldValue',
+        }
+        let person = new Person('Mike', 22);
+        // 1. 给对象不存在的属性赋值，不会查找原型对象中书否存在该属性，而是给对象直接新增一个属性并赋值。
+        person.currentValue = 'newValue';
+        // 2. 对象访问属性的时候，优先访问构造方法中的属性，然后再使用原型对象中的属性。
+        console.log(person.currentValue);
+        // 3. 当构造函数和原型属性中的属性或者方法同名时，可以通过下面的方式访问原型属性中的属性或方法。
+        console.log(person.__proto__.currentValue);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

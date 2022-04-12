@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13-封装性</title>
+    <script>
+        function Person(name) {
+            // 1. 默认属性和方法都是公开的
+            this.name = name;
+            // 2. 通过let/var声明的变量则是局部变量，外界无法访问
+            let age = 18;
+            this.setAge = function (age) {
+                if (age >= 0 && age < 180) {
+                    this.age = age;
+                }
+            }
+            this.getAge = function () {
+                return this.age;
+            }
+        }
+
+        let person = new Person('Mike');
+        person.setAge(40);
+        console.log(person.getAge());
+    </script>
+</head>
+<body>
+
+</body>
+</html>
