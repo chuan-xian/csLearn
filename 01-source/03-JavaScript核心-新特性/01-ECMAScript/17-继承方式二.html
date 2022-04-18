@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>17-继承方式二</title>
+    <script>
+        function Person(myName, myAge) {
+            this.name = myName;
+            this.age = myAge;
+            console.log(this.name, this.age);
+        }
+        function Student(myName, myAge, myScore) {
+            /**
+             * 重点在于Person.call(this, myName, myAge);
+             * 将Person构造方法中的this指向为Student中的this，并直接调用Person构造方法
+             * 就等于创建了Person中的属性并将this改为了Student的对象
+             */
+            Person.call(this, myName, myAge);
+            this.score = myScore;
+            console.log(this.score);
+        }
+        let stu = new Student('zhangsan', 18, 99);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

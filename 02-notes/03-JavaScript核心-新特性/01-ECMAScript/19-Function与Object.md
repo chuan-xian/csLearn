@@ -8,11 +8,11 @@
 
 4. `Function`函数的`__proto__`指向它自己的原型对象，即`Function`函数的 `__proto__`等于`prototype`。
 
-<img src="../00-images/03-JavaScript核心-新特性/Function_prototype.png">
+<img src="../../00-images/03-JavaScript核心-新特性/Function_prototype.png">
 
 5. `Object`函数也是`Function`函数的实例化构造对象。
 
-<img src="../00-images/03-JavaScript核心-新特性/Object.png">
+<img src="../../00-images/03-JavaScript核心-新特性/Object.png">
 
 6. `Object`的原型对象也有`__proto__`属性，但是指向`NULL`。
 
@@ -26,7 +26,7 @@
    
 8. 全部关系图：
 
-<img src="../00-images/03-JavaScript核心-新特性/prototype_constructor___proto__.png">
+<img src="../../00-images/03-JavaScript核心-新特性/prototype_constructor___proto__.png">
 
 9. `prototype`、`constructor`、`__proto__`关系总结：
    - 所有构造函数都有 `prototype` ，它指向该构造函数的原型对象(原型属性)。

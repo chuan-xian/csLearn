@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19-继承方式四</title>
+    <script>
+        function Person (myName, myAge) {
+            this.name = myName;
+            this.age = myAge;
+        }
+        function Student (myName, myAge, myScore) {
+            Person.call(this, myName, myAge);
+            this.score = myScore;
+            this.out = function () {
+                console.log(this.score);
+            }
+        }
+        Person.prototype.say = function () {
+            console.log(this.name, this.age);
+        }
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+        let stu = new Student('zs', 18, 99);
+        stu.out();
+        stu.say();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

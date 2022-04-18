@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18-继承方式三</title>
+    <script>
+        function Person (myName, myAge) {
+            this.name = myName;
+            this.age = myAge;
+        }
+        function Student (myName, myAge, myScore) {
+            Person.call(this, myName, myAge);
+            this.score = myScore;
+            this.out = function () {
+                console.log(this.score);
+            }
+        }
+        // 1. 继承方式二不能让子类继承父类中的原型属性
+        Person.prototype.say = function () {
+            console.log(this.name, this.age);
+        }
+        // stu.say();  //  没有继承到父类中的原型属性，所以不具备say方法，
+        // 2. 修改子类的原型为父类的原型
+        Student.prototype = Person.prototype;
+        Student.prototype.constructor = Student;
+        // 3. 子类集成了父类的原型，可以调用sai方法
+        let stu = new Student('zhangsan', 18, 99);
+        stu.out();
+        stu.say();
+        // 4. 弊端：给子类的原型属性添加属性或方法，父类中也能调用，污染了父类
+        Student.prototype.printit = function () {
+            console.log('污染父类');
+        }
+        let person = new Person('lisi', 20);
+        person.printit();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

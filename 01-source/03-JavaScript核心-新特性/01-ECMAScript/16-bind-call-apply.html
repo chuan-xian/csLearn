@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-bind-call-apply</title>
+    <script>
+        let obj = {
+            name: 'zhangsa',
+        }
+        function test (a, b) {
+            console.log(a, b);
+            console.log(this);
+        }
+        // 默认this指向全局对象window
+        test(10, 20);
+        // 修改默认this指向obj，并返回新的函数
+        /*let fn = test.bind(obj, 30, 40);
+        fn();
+        test(11, 22);*/
+
+        // test.call(obj, 30, 40);
+        // test(11, 22);
+
+        test.apply(obj, [30, 40]);
+        test(11, 22);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
