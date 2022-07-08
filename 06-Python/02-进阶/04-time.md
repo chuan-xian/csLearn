@@ -50,7 +50,9 @@ w = time.strptime(q, "%Y-%m-%d %X")
 5. 时间戳、格式化时间、时间元组之间的转换
 <img src='../00-images/transfer.png'>
 
+6. `time.sleep(n)`：延迟一个时间，整型或者浮点型
 
+7. `time.clock()`：返回当前程序的`cpu`执行时间
 
 
 
