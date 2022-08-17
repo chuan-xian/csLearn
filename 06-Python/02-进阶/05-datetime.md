@@ -42,8 +42,3 @@ dt5.days
 dt5.seconds
 ```
 
-
-
-
-
-
