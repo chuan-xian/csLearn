@@ -54,7 +54,3 @@ w = time.strptime(q, "%Y-%m-%d %X")
 
 7. `time.clock()`：返回当前程序的`cpu`执行时间
 
-
-
-
-
