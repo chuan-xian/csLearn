@@ -1,4 +1,4 @@
-# JavaScript常见的输出方式
+# `JavaScript`常见的输出方式
 
 ## 通过弹窗的形式来输出
 
