@@ -42,5 +42,5 @@
 </style>
 ```
 
-
+6. 清除边距代码：http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css
 
