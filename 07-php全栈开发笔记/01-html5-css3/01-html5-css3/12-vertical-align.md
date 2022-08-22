@@ -1,6 +1,6 @@
-# vetical-align
+# 一、`vetical-align`
 
-1. 六根线条:
+1. 六根线条：
     - `top`表示盒子的顶部；
     - `bottom`表示盒子的底部；
     - `text-top`表示盒子内文字的顶部；
