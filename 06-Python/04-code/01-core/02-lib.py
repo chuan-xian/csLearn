@@ -25,7 +25,19 @@ str = '12';
 print(complex(1, 3));
 print(complex('1+2.3j'))
 
+# import sys
 
+# str = '1234'
+# for i in str:
+# 	sys.stdout.write(i)
+# print('end')
+
+
+num = 100;
+str = ('num is %d' % num)
+print(str);
+str = [('%03x' % ord(i)) for i in 'hello world']
+print(str)
 
 
 
